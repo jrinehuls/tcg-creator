@@ -1,11 +1,9 @@
-
+import MonsterForm from "./MonsterForm"
 
 function App() {
 
   return (
-      <h2>
-        HI
-      </h2>
+    <MonsterForm />
   )
 }
 
