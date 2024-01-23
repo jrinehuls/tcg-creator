@@ -17,7 +17,7 @@ function MonsterForm() {
     };
 
     const [monster, setMonster] = useState(defaultMonster);
-    const [file, setFile] = useState();
+    const [image, setImage] = useState();
 
     function handleChange(event) {
         const {name, value} = event.target;
@@ -31,12 +31,14 @@ function MonsterForm() {
     }
 
     function handleClick() {
+        const formData = new FormData();
+        formData.append('image', image); {/* Maybe monster.image */}
         console.log(monster);
     }
 
     {/* Not being used yet*/}
-    function handleFile(event) {
-        setFile(event.target.files[0]);
+    function handleImage(event) {
+        setImage(event.target.files[0]);
         setMonster(p => {
             return {
                 ...p,
