@@ -8,9 +8,9 @@ function Header() {
                 <nav className="nav-bar">
                     <span>Monster Time</span>
                     <div className="link-container">
-                        <a href="/">Click me</a>
-                        <a href="/">Click me</a>
-                        <a href="/">Click me</a>
+                        <a href="/">Click Me</a>
+                        <a href="/">Click Me</a>
+                        <a href="/">Click Me</a>
                     </div>
                 </nav>
             </header>
