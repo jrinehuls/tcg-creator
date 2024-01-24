@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { addMonster } from "../services/monsterService";
+import { addMonster } from "../../services/monsterService";
+import "./MonsterForm.css"
 
 function MonsterForm() {
 
@@ -58,11 +59,11 @@ function MonsterForm() {
 
 
     return(
-        <div>
+        <div className="container">
             <form>
                 <div className="">
                     <label>Name:</label>
-                    <input className="" onChange={handleChange} type="text" name="name" value={monster.name} placeholder="name"></input>
+                    <input className="" onChange={handleChange} type="text" name="name" value={monster.name} placeholder="Enter name..."></input>
                 </div>
                 <div className="">
                     <label>HP:</label>
