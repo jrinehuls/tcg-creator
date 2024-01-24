@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { addMonster } from "../services/monsterService";
 
 function MonsterForm() {
 
@@ -12,8 +13,7 @@ function MonsterForm() {
         magicDefense: 0,
         speed: 0,
         baseGold: 0,
-        baseExp: 0,
-        image: ""
+        baseExp: 0
     };
 
     const [monster, setMonster] = useState(defaultMonster);
@@ -30,21 +30,30 @@ function MonsterForm() {
         })
     }
 
-    function handleClick() {
+    async function handleClick() {
         const formData = new FormData();
-        formData.append('image', image); {/* Maybe monster.image */}
-        console.log(monster);
+        formData.append('image', image);
+        formData.append('name', monster.name);
+        formData.append('hp', monster.hp);
+        formData.append('mp', monster.mp);
+        formData.append('attack', monster.attack);
+        formData.append('defense', monster.defense);
+        formData.append('magicAttack', monster.magicAttack);
+        formData.append('magicDefense', monster.magicDefense);
+        formData.append('speed', monster.speed);
+        formData.append('baseGold', monster.baseGold);
+        formData.append('baseExp', monster.baseExp);
+        try {
+            const response = await addMonster(formData);
+            console.log(response.data)
+        } catch (error) {
+            console.log(error.response.data)
+        }
     }
 
-    {/* Not being used yet*/}
     function handleImage(event) {
-        setImage(event.target.files[0]);
-        setMonster(p => {
-            return {
-                ...p,
-                [event.target.name]: [event.target.value]
-            };
-        })
+        const {files} = event.target;
+        setImage(files[0]);
     }
 
 
@@ -93,7 +102,7 @@ function MonsterForm() {
                 </div>
                 <div className="">
                     <label>Image:</label>
-                    <input className="" onChange={handleChange} type="file" name="image" value={monster.image}></input>
+                    <input className="" onChange={handleImage} type="file" name="image" ></input>
                 </div>
                 <div className="">
                     <button className="" onClick={handleClick} type="button" >Save</button >
