@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { addMonster } from "../../services/monsterService";
+import FormText from "./FormText";
 import "./MonsterForm.css"
+import getErrorResponse from "../../utils/errorUtils";
 
 function MonsterForm() {
 
@@ -18,7 +20,7 @@ function MonsterForm() {
     };
 
     const [monster, setMonster] = useState(defaultMonster);
-    const [image, setImage] = useState();
+    const [image, setImage] = useState(null);
 
     function handleChange(event) {
         const {name, value} = event.target;
@@ -31,9 +33,8 @@ function MonsterForm() {
         })
     }
 
-    async function handleClick() {
+    function createFormData() {
         const formData = new FormData();
-        formData.append('image', image);
         formData.append('name', monster.name);
         formData.append('hp', monster.hp);
         formData.append('mp', monster.mp);
@@ -44,11 +45,22 @@ function MonsterForm() {
         formData.append('speed', monster.speed);
         formData.append('baseGold', monster.baseGold);
         formData.append('baseExp', monster.baseExp);
+        if (image) {
+            formData.append('image', image); // Sends null or undefined as a string if no upload
+        }
+
+        return formData;
+    }
+
+    async function handleClick() {
+        const formData = createFormData();
+        
         try {
             const response = await addMonster(formData);
             console.log(response.data)
+            setMonster(defaultMonster);
         } catch (error) {
-            console.log(error.response.data)
+            console.log(getErrorResponse(error))
         }
     }
 
@@ -60,55 +72,38 @@ function MonsterForm() {
 
     return(
         <div className="container">
-            <form>
-                <div className="">
-                    <label>Name:</label>
-                    <input className="" onChange={handleChange} type="text" name="name" value={monster.name} placeholder="Enter name..."></input>
-                </div>
-                <div className="">
-                    <label>HP:</label>
-                    <input className="" onChange={handleChange} type="number" name="hp" value={monster.hp}></input>
-                </div>
-                <div className="">
-                    <label>MP:</label>
-                    <input className="" onChange={handleChange} type="number" name="mp" value={monster.mp}></input>
-                </div>
-                <div className="">
-                    <label>Attack:</label>
-                    <input className="" onChange={handleChange} type="number" name="attack" value={monster.attack}></input>
-                </div>
-                <div className="">
-                    <label>Defense:</label>
-                    <input className="" onChange={handleChange} type="number" name="defense" value={monster.defense}></input>
-                </div>
-                <div className="">
-                    <label>Magic Attack:</label>
-                    <input className="" onChange={handleChange} type="number" name="magicAttack" value={monster.magicAttack}></input>
-                </div>
-                <div className="">
-                    <label>Magic Defense:</label>
-                    <input className="" onChange={handleChange} type="number" name="magicDefense" value={monster.magicDefense}></input>
-                </div>
-                <div className="">
-                    <label>Speed:</label>
-                    <input className="" onChange={handleChange} type="number" name="speed" value={monster.speed}></input>
-                </div>
-                <div className="">
-                    <label>Base Gold:</label>
-                    <input className="" onChange={handleChange} type="number" name="baseGold" value={monster.baseGold}></input>
-                </div>
-                <div className="">
-                    <label>Base Exp:</label>
-                    <input className="" onChange={handleChange} type="number" name="baseExp" value={monster.baseExp}></input>
-                </div>
-                <div className="">
-                    <label>Image:</label>
-                    <input className="" onChange={handleImage} type="file" name="image" ></input>
-                </div>
-                <div className="">
-                    <button className="" onClick={handleClick} type="button" >Save</button >
-                </div>
-            </form>
+            <h1>Createth Thou Thine Monsta!</h1>
+            <div className="form-container">
+                <form>
+                    <FormText labelText="Name:" handleChange={handleChange} value={monster.name}
+                        type="text" name="name" holder="Enter name..."/>
+                    <FormText labelText="HP:" handleChange={handleChange} value={monster.hp}
+                        type="number" name="hp" holder="Enter HP..."/>
+                    <FormText labelText="MP:" handleChange={handleChange} value={monster.mp}
+                        type="number" name="mp" holder="Enter MP..."/>
+                    <FormText labelText="Attack:" handleChange={handleChange} value={monster.attack}
+                        type="number" name="attack" holder="Enter Attack..."/>
+                    <FormText labelText="Defense:" handleChange={handleChange} value={monster.defense}
+                        type="number" name="defense" holder="Enter Defense..."/>
+                    <FormText labelText="Magic Attack:" handleChange={handleChange} value={monster.magicAttack}
+                        type="number" name="magicAttack" holder="Enter Magic Attack..."/>
+                    <FormText labelText="Magic Defense:" handleChange={handleChange} value={monster.magicDefense}
+                        type="number" name="magicDefense" holder="Enter Magic Defense..."/>
+                    <FormText labelText="Speed:" handleChange={handleChange} value={monster.speed}
+                        type="number" name="speed" holder="Enter Speed..."/>
+                    <FormText labelText="Base Gold:" handleChange={handleChange} value={monster.baseGold}
+                        type="number" name="baseGold" holder="Enter Base Gold..."/>
+                    <FormText labelText="Base Exp:" handleChange={handleChange} value={monster.baseExp}
+                        type="number" name="baseExp" holder="Enter Base Exp..."/>
+                    <div className="input-area">
+                        <label className="input-label">Image:</label>
+                        <input className="input-image" onChange={handleImage} type="file" name="image" ></input>
+                    </div>
+                    <div className="button-container">
+                        <button className="submit-button" onClick={handleClick} type="button" >Submit</button >
+                    </div>
+                </form>
+            </div>
         </div>
       );
 }

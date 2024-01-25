@@ -1,9 +1,72 @@
+
 .container {
-    margin-top: 100px;
-    width: 40%;
     margin: 100px auto auto;
+    width: 40%;
+    min-width: 500px;
+}
+
+h1 {
+    text-align: center;
+    color: rgb(20, 230, 20);
+    margin-top: 0px;
+}
+
+.form-container {
     border: 1px solid black;
     border-radius: 10px;
-    padding: 10px;
+    padding: 20px;
+    background-color: rgb(20, 230, 20);
+}
 
+.input-area {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0px;
+}
+
+.input-label {
+    text-align: left;
+    width: 30%;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.input-text {
+    width: 45%;
+    padding: 4px 10px;
+    font-size: 20px;
+    border: 1px solid rgb(118, 118, 118);
+    border-radius: 2px;
+    background-color: aliceblue;
+}
+
+.input-image {
+    width: 45%;
+    padding: 0px 20px 0px 0px;
+    font-size: 16px;
+    border: 1px solid rgb(118, 118, 118);
+    border-radius: 2px;
+    font-weight: 700;
+    background-color: aliceblue;
+}
+
+.input-image::file-selector-button {
+    font-weight: 700;
+    height: 31px;
+    margin-right: 8px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.submit-button {
+    font-size: 20px;
+    width: 40%;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 8px 0px;
 }

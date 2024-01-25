@@ -2,8 +2,9 @@ header {
     position: fixed;
     top: 0;
     width: 100%;
+    min-width: 500px;
     height: 60px;
-    background-color: rgb(100, 100, 100);
+    background-color: rgb(80, 80, 80);
 }
 
 .nav-bar {
