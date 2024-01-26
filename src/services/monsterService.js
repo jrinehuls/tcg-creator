@@ -10,3 +10,9 @@ export async function addMonster(formData) {
     };
     return await Axios.post(url, formData, config);
 }
+
+export async function getAllMonsters() {
+
+  return await Axios.get(url);
+  
+}
