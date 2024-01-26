@@ -11,53 +11,53 @@ h1 {
     margin-top: 0px;
 }
 
-.form-container {
+.formContainer {
     border: 1px solid black;
     border-radius: 10px;
     padding: 20px;
     background-color: rgb(20, 230, 20);
 }
 
-.input-container {
+.inputContainer {
     display: flex;
     justify-content: space-between;
     margin: 5px 0px;
 }
 
-.input-label {
+.inputLabel {
     text-align: left;
     width: 40%;
     font-size: 20px;
     font-weight: 800;
 }
 
-.input-area {
+.inputArea {
     display: flex;
     flex-direction: column;
     width: 50%;
 }
 
-.input-image {
+.inputImage {
     border: 1px solid rgb(118, 118, 118);
     font-size: 16px;
     border-radius: 5px;
     background-color: aliceblue;
 }
 
-.input-image::file-selector-button {
+.inputImage::file-selector-button {
     font-weight: 700;
     height: 31px;
     margin-right: 8px;
 }
 
-.button-container {
+.buttonContainer {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 20px;
 }
 
-.submit-button {
+.submitButton {
     font-size: 20px;
     width: 40%;
     border: 2px solid black;

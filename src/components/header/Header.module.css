@@ -7,25 +7,25 @@ header {
     background-color: rgb(80, 80, 80);
 }
 
-.nav-bar {
+.navbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 100%;
 }
 
-.nav-bar span {
+.navbar span {
     padding-left: 20px;
     font-size: 1.5rem;
     color: rgb(20, 230, 20);
 }
 
-.link-container {
+.linkContainer {
     display: flex;
     padding-right: 20px;
 }
 
-.link-container a {
+.linkContainer a {
     text-decoration: none;
     font-size: 1.2rem;
     padding: 10px;

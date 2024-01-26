@@ -1,13 +1,13 @@
-import "./Header.css"
+import styles from "./Header.module.css"
 
 function Header() {
 
     return(
         <div>
             <header>
-                <nav className="nav-bar">
+                <nav className={styles.navbar}>
                     <span>Monster Time</span>
-                    <div className="link-container">
+                    <div className={styles.linkContainer}>
                         <a href="/monster/create">Add Monster</a>
                         <a href="/">Click Me</a>
                         <a href="/">Click Me</a>

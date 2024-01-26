@@ -2,9 +2,9 @@ import { useState, useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { addMonster } from "../../services/monsterService";
 import FormText from "./FormText";
-import FormFieldError from "../form_field_error/FormFieldError"
-import "./MonsterForm.css"
+import FormFieldError from "../form_field_error/FormFieldError";
 import getErrorResponse from "../../utils/errorUtils";
+import styles from "./MonsterForm.module.css";
 
 function MonsterForm() {
 
@@ -83,9 +83,9 @@ function MonsterForm() {
 
 
     return(
-        <div className="container">
+        <div className={styles.container}>
             <h1>Createth Thou Thine Monster</h1>
-            <div className="form-container">
+            <div className={styles.formContainer}>
                 <form>
                     <FormText labelText="Name:" handleChange={handleChange} value={monster.name}
                         type="text" name="name" holder="Enter Name..." messages={errors?.name} />
@@ -107,15 +107,15 @@ function MonsterForm() {
                         type="number" name="baseGold" holder="Enter Base Gold..." messages={errors?.baseGold} />
                     <FormText labelText="Base Exp:" handleChange={handleChange} value={monster.baseExp}
                         type="number" name="baseExp" holder="Enter Base Exp..." messages={errors?.baseExp} />
-                    <div className="input-container">
-                        <label className="input-label">Image:</label>
-                        <div className="input-area">
-                            <input className="input-image" onChange={handleImage} type="file" name="image" ref={ref} ></input>
+                    <div className={styles.inputContainer}>
+                        <label className={styles.inputLabel}>Image:</label>
+                        <div className={styles.inputArea}>
+                            <input className={styles.inputImage} onChange={handleImage} type="file" name="image" ref={ref} ></input>
                             <FormFieldError messages={errors?.image} />
                         </div>
                     </div>
-                    <div className="button-container">
-                        <button className="submit-button" onClick={handleClick} type="button" >Submit</button >
+                    <div className={styles.buttonContainer}>
+                        <button className={styles.submitButton} onClick={handleClick} type="button" >Submit</button >
                     </div>
                 </form>
             </div>
