@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { addMonster, getMonsterById } from "../../services/monsterService";
+import { addMonster, getMonsterById, updateMonster } from "../../services/monsterService";
 import FormText from "./FormText";
 import FormFieldError from "../form_field_error/FormFieldError";
 import getErrorResponse from "../../utils/errorUtils";
@@ -34,7 +34,7 @@ function MonsterForm() {
         if (id) {
             getMonster(id);
         }
-    }, [])
+    }, [id])
 
     async function getMonster(id) {
         try {
@@ -89,8 +89,11 @@ function MonsterForm() {
         const formData = createFormData();
         
         try {
-            const response = await addMonster(formData);
-            console.log(response.data);
+            if (id) {
+                await updateMonster(id, formData);
+            } else {
+                await addMonster(formData);
+            }
             clearForm();
             navigator("/");
         } catch (error) {
