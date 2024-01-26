@@ -1,0 +1,17 @@
+
+.container {
+    margin: 150px auto 200px auto;
+    width: 40%;
+    min-width: 500px;
+}
+
+.container > h1 {
+    text-align: center;
+    color: rgb(20, 230, 20);
+    margin-top: 0px;
+}
+
+.cardContainer {
+    display: flex;
+    justify-content: space-around;
+}

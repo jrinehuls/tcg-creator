@@ -16,3 +16,10 @@ export async function getAllMonsters() {
   return await Axios.get(url);
   
 }
+
+export async function getMonsterById(id) {
+
+    return await Axios.get(url + `/${id}`);
+    
+}
+  

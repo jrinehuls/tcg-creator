@@ -13,6 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<MonsterCards />}></Route>
           <Route path="/monster/create" element={<MonsterForm />}></Route>
+          <Route path="/monster/:id" element={<MonsterForm />}></Route>
         </Routes>
         <Footer />
       </BrowserRouter>

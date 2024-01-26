@@ -1,0 +1,37 @@
+
+.card {
+    display: flex;
+    flex-direction: column;
+    width: 240px;
+    height: 336px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background: linear-gradient(to bottom right, rgb(255, 80, 40), rgb(235, 170, 30));
+}
+
+.topStats {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 10px;
+}
+
+.topTextItems {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.imageWindow {
+    display: flex;
+    justify-content: center;
+    width: 85%;
+    height: 42%;
+    background: linear-gradient(to bottom left, rgb(175, 225, 235), rgb(140, 150, 210));
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 0px auto;
+}
+
+.image {
+    aspect-ratio: 1/1;
+    margin: 3px 0px;
+}

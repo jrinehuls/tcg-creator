@@ -1,6 +1,6 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { addMonster } from "../../services/monsterService";
+import { addMonster, getMonsterById } from "../../services/monsterService";
 import FormText from "./FormText";
 import FormFieldError from "../form_field_error/FormFieldError";
 import getErrorResponse from "../../utils/errorUtils";
@@ -24,8 +24,30 @@ function MonsterForm() {
     const [monster, setMonster] = useState(defaultMonster);
     const [image, setImage] = useState(null);
     const [errors, setErrors] = useState(null);
+
     const ref = useRef();
     const navigator = useNavigate();
+    const {id} = useParams();
+
+
+    useEffect(() => {
+        if (id) {
+            getMonster(id);
+        }
+    }, [])
+
+    async function getMonster(id) {
+        try {
+            const response = await getMonsterById(id);
+            setMonster(response.data);
+        } catch (error) {
+            if (error.response.status === 404) {
+                navigator("/");
+            } else {
+                console.log(error);
+            }
+        }
+    }
 
     function handleChange(event) {
         const {name, value} = event.target;
