@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { addMonster } from "../../services/monsterService";
 import FormText from "./FormText";
 import FormFieldError from "../form_field_error/FormFieldError"
@@ -24,6 +25,7 @@ function MonsterForm() {
     const [image, setImage] = useState(null);
     const [errors, setErrors] = useState(null);
     const ref = useRef();
+    const navigator = useNavigate();
 
     function handleChange(event) {
         const {name, value} = event.target;
@@ -68,6 +70,7 @@ function MonsterForm() {
             const response = await addMonster(formData);
             console.log(response.data);
             clearForm();
+            navigator("/");
         } catch (error) {
             setErrors(getErrorResponse(error));
         }

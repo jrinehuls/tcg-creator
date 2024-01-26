@@ -8,7 +8,7 @@ function Header() {
                 <nav className="nav-bar">
                     <span>Monster Time</span>
                     <div className="link-container">
-                        <a href="/">Click Me</a>
+                        <a href="/monster/create">Add Monster</a>
                         <a href="/">Click Me</a>
                         <a href="/">Click Me</a>
                     </div>
