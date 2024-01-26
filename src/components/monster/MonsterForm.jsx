@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { addMonster } from "../../services/monsterService";
 import FormText from "./FormText";
+import FormFieldError from "../form_field_error/FormFieldError"
 import "./MonsterForm.css"
 import getErrorResponse from "../../utils/errorUtils";
 
@@ -8,19 +9,21 @@ function MonsterForm() {
 
     const defaultMonster = {
         name: "",
-        hp: 0,
-        mp: 0,
-        attack: 0,
-        defense: 0,
-        magicAttack: 0,
-        magicDefense: 0,
-        speed: 0,
-        baseGold: 0,
-        baseExp: 0
+        hp: "",
+        mp: "",
+        attack: "",
+        defense: "",
+        magicAttack: "",
+        magicDefense: "",
+        speed: "",
+        baseGold: "",
+        baseExp: ""
     };
 
     const [monster, setMonster] = useState(defaultMonster);
     const [image, setImage] = useState(null);
+    const [errors, setErrors] = useState(null);
+    const ref = useRef();
 
     function handleChange(event) {
         const {name, value} = event.target;
@@ -52,15 +55,21 @@ function MonsterForm() {
         return formData;
     }
 
+    function clearForm() {
+        setMonster(defaultMonster);
+        ref.current.value = null;
+        setErrors(null);
+    }
+
     async function handleClick() {
         const formData = createFormData();
         
         try {
             const response = await addMonster(formData);
-            console.log(response.data)
-            setMonster(defaultMonster);
+            console.log(response.data);
+            clearForm();
         } catch (error) {
-            console.log(getErrorResponse(error))
+            setErrors(getErrorResponse(error));
         }
     }
 
@@ -72,32 +81,35 @@ function MonsterForm() {
 
     return(
         <div className="container">
-            <h1>Createth Thou Thine Monsta!</h1>
+            <h1>Createth Thou Thine Monster</h1>
             <div className="form-container">
                 <form>
                     <FormText labelText="Name:" handleChange={handleChange} value={monster.name}
-                        type="text" name="name" holder="Enter name..."/>
+                        type="text" name="name" holder="Enter Name..." messages={errors?.name} />
                     <FormText labelText="HP:" handleChange={handleChange} value={monster.hp}
-                        type="number" name="hp" holder="Enter HP..."/>
+                        type="number" name="hp" holder="Enter HP..." messages={errors?.hp} />
                     <FormText labelText="MP:" handleChange={handleChange} value={monster.mp}
-                        type="number" name="mp" holder="Enter MP..."/>
+                        type="number" name="mp" holder="Enter MP..." messages={errors?.mp} />
                     <FormText labelText="Attack:" handleChange={handleChange} value={monster.attack}
-                        type="number" name="attack" holder="Enter Attack..."/>
+                        type="number" name="attack" holder="Enter Attack..." messages={errors?.attack} />
                     <FormText labelText="Defense:" handleChange={handleChange} value={monster.defense}
-                        type="number" name="defense" holder="Enter Defense..."/>
+                        type="number" name="defense" holder="Enter Defense..." messages={errors?.defense} />
                     <FormText labelText="Magic Attack:" handleChange={handleChange} value={monster.magicAttack}
-                        type="number" name="magicAttack" holder="Enter Magic Attack..."/>
+                        type="number" name="magicAttack" holder="Enter Magic Attack..." messages={errors?.magicAttack} />
                     <FormText labelText="Magic Defense:" handleChange={handleChange} value={monster.magicDefense}
-                        type="number" name="magicDefense" holder="Enter Magic Defense..."/>
+                        type="number" name="magicDefense" holder="Enter Magic Defense..." messages={errors?.magicDefense} />
                     <FormText labelText="Speed:" handleChange={handleChange} value={monster.speed}
-                        type="number" name="speed" holder="Enter Speed..."/>
+                        type="number" name="speed" holder="Enter Speed..." messages={errors?.speed} />
                     <FormText labelText="Base Gold:" handleChange={handleChange} value={monster.baseGold}
-                        type="number" name="baseGold" holder="Enter Base Gold..."/>
+                        type="number" name="baseGold" holder="Enter Base Gold..." messages={errors?.baseGold} />
                     <FormText labelText="Base Exp:" handleChange={handleChange} value={monster.baseExp}
-                        type="number" name="baseExp" holder="Enter Base Exp..."/>
-                    <div className="input-area">
+                        type="number" name="baseExp" holder="Enter Base Exp..." messages={errors?.baseExp} />
+                    <div className="input-container">
                         <label className="input-label">Image:</label>
-                        <input className="input-image" onChange={handleImage} type="file" name="image" ></input>
+                        <div className="input-area">
+                            <input className="input-image" onChange={handleImage} type="file" name="image" ref={ref} ></input>
+                            <FormFieldError messages={errors?.image} />
+                        </div>
                     </div>
                     <div className="button-container">
                         <button className="submit-button" onClick={handleClick} type="button" >Submit</button >

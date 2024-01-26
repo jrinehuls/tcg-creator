@@ -1,6 +1,6 @@
 
 .container {
-    margin: 100px auto auto;
+    margin: 150px auto 200px auto;
     width: 40%;
     min-width: 500px;
 }
@@ -18,7 +18,7 @@ h1 {
     background-color: rgb(20, 230, 20);
 }
 
-.input-area {
+.input-container {
     display: flex;
     justify-content: space-between;
     margin: 5px 0px;
@@ -26,27 +26,21 @@ h1 {
 
 .input-label {
     text-align: left;
-    width: 30%;
+    width: 40%;
     font-size: 20px;
     font-weight: 800;
 }
 
-.input-text {
-    width: 45%;
-    padding: 4px 10px;
-    font-size: 20px;
-    border: 1px solid rgb(118, 118, 118);
-    border-radius: 2px;
-    background-color: aliceblue;
+.input-area {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
 }
 
 .input-image {
-    width: 45%;
-    padding: 0px 20px 0px 0px;
-    font-size: 16px;
     border: 1px solid rgb(118, 118, 118);
-    border-radius: 2px;
-    font-weight: 700;
+    font-size: 16px;
+    border-radius: 5px;
     background-color: aliceblue;
 }
 
