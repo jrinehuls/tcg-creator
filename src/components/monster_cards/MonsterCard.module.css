@@ -2,8 +2,8 @@
 .card {
     display: flex;
     flex-direction: column;
-    width: 240px;
-    height: 336px;
+    width: 320px;
+    aspect-ratio: 5/7;
     border: 1px solid black;
     border-radius: 10px;
     background: linear-gradient(to bottom right, rgb(255, 80, 40), rgb(235, 170, 30));
@@ -24,7 +24,7 @@
     display: flex;
     justify-content: center;
     width: 85%;
-    height: 42%;
+    height: 35%;
     background: linear-gradient(to bottom left, rgb(175, 225, 235), rgb(140, 150, 210));
     border: 1px solid black;
     border-radius: 10px;
@@ -34,4 +34,21 @@
 .image {
     aspect-ratio: 1/1;
     margin: 3px 0px;
+}
+
+.statsContainer {
+    border: 1px solid black;
+    background-color: yellow;
+    display: grid;
+    grid-template-columns: auto auto;
+    width: 85%;
+    margin: 1px auto;
+}
+
+.spellContainer {
+    border: 1px solid black;
+    display: flex;
+    width: 85%;
+    margin: 1px auto 23px auto;
+    flex-grow: 1;
 }

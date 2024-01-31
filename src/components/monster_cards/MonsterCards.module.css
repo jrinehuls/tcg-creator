@@ -1,8 +1,10 @@
 
 .container {
-    margin: 150px auto 200px auto;
-    width: 40%;
+    margin: 100px auto 200px auto;
+    width: 90%;
     min-width: 500px;
+    border: 1px solid gray;
+    border-radius: 10px;
 }
 
 .container > h1 {
