@@ -10,10 +10,13 @@
 .container > h1 {
     text-align: center;
     color: rgb(20, 230, 20);
-    margin-top: 0px;
+    margin: 0px;
 }
 
 .cardContainer {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    flex-wrap: wrap;
+    border: 1px solid gray;
+    border-radius: 10px;
 }

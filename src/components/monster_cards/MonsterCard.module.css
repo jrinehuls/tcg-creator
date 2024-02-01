@@ -2,8 +2,9 @@
 .card {
     display: flex;
     flex-direction: column;
-    width: 320px;
+    min-width: 320px;
     aspect-ratio: 5/7;
+    margin: 20px;
     border: 1px solid black;
     border-radius: 10px;
     background: linear-gradient(to bottom right, rgb(255, 80, 40), rgb(235, 170, 30));
@@ -39,10 +40,20 @@
 .statsContainer {
     border: 1px solid black;
     background-color: yellow;
-    display: grid;
-    grid-template-columns: auto auto;
+    display: flex;
+    flex-direction: column;
     width: 85%;
     margin: 1px auto;
+}
+
+.statsRow {
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 5px;
+}
+
+.statsRow > div {
+    width: 50%;
 }
 
 .spellContainer {
