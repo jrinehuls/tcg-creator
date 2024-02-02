@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { getAllSpells, deleteSpell } from "../../services/spellService";
+import { useNavigate, useParams } from "react-router-dom";
 import SpellCard from "./SpellCard";
 import styles from "./SpellCards.module.css";
 
@@ -7,6 +8,8 @@ function SpellCards() {
 
     const [spells, setSpells] = useState([]);
     const [refresh, setRefresh] = useState(false);
+
+    const {monsterId} = useParams();
 
     useEffect(() => {
         getSpells();
@@ -37,7 +40,7 @@ function SpellCards() {
             <h1>Your Spells:</h1>
             <div className={styles.cardContainer}>
                 {spells.map(spell => {
-                    return <SpellCard key={spell.id} spell={spell} onDelete={onDelete}/>
+                    return <SpellCard key={spell.id} spell={spell} onDelete={onDelete} monsterId={monsterId}/>
                 })}
             </div>
         </div>

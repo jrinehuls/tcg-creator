@@ -19,6 +19,7 @@ function App() {
           <Route path="/monster/:id" element={<MonsterForm />}></Route>
           <Route path="/monster/choice/:id" element={<MonsterChoice />}></Route>
           <Route path="/spells" element={<SpellCards />}></Route>
+          <Route path="/spells/:monsterId" element={<SpellCards />}></Route>
           <Route path="/spell/create" element={<SpellForm />}></Route>
           <Route path="/spell/:id" element={<SpellForm />}></Route>
         </Routes>

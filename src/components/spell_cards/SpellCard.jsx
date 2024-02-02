@@ -1,9 +1,12 @@
 import styles from "./SpellCard.module.css";
 import { useNavigate } from "react-router-dom";
 
-function SpellCard({spell, onDelete}) {
+function SpellCard({spell, onDelete, monsterId}) {
 
     const navigator = useNavigate()
+
+
+    
 
     return (
         <div className={styles.card}>
@@ -14,10 +17,14 @@ function SpellCard({spell, onDelete}) {
             <div className={styles.text}>
                 <p>{spell.description}</p>
             </div>
+            {monsterId ? 
+            <div className={styles.buttonContainer}>
+                <button className={styles.learnButton} type="button">Learn</button>
+            </div> : 
             <div className={styles.buttonContainer}>
                 <button className={styles.editButton} type="button" onClick={() => navigator(`/spell/${spell.id}`)}>Edit</button>
                 <button className={styles.deleteButton} type="button" onClick={() => onDelete(spell.id)}>Delete</button>
-            </div>
+            </div>}
         </div>
     );
 }

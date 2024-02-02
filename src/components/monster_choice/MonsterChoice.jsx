@@ -36,7 +36,7 @@ function MonsterChoice() {
 
     return(
         <div className={styles.container}>
-            <h1>What are your intentions with {monster.name}</h1>
+            <h1>What are your intentions with {monster.name}?</h1>
             <div className={styles.buttonContainer}>
                 <button className={styles.addButton} type="button">Add Spell</button>
                 <button className={styles.editButton} type="button" onClick={() => navigator(`/monster/${id}`)}>Edit {monster.name}</button>
