@@ -3,7 +3,6 @@ import FormFieldError from "../form_field_error/FormFieldError"
 
 function FormText({labelText, handleChange, value, type, name, holder, messages}) {
 
-
     return(
         <div className={styles.inputContainer}>
             <label className={styles.inputLabel}>{labelText}</label>
@@ -13,6 +12,7 @@ function FormText({labelText, handleChange, value, type, name, holder, messages}
             </div>
         </div>
     );
+    
 }
 
 export default FormText;
