@@ -1,0 +1,44 @@
+.container {
+    margin: 150px auto 200px auto;
+    width: 40%;
+    min-width: 500px;
+}
+
+.container > h1 {
+    text-align: center;
+    color: rgb(20, 230, 20);
+    margin-top: 0px;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: rgb(20, 230, 20);
+}
+
+.buttonContainer > button {
+    font-size: 16px;
+    color: white;
+    font-weight: 700;
+    height: 60px;
+    width: 30%;
+}
+
+.buttonContainer > button:hover {
+    cursor: pointer;
+}
+
+.addButton {
+    background-color: blue;
+}
+
+.editButton {
+    background-color: orange;
+}
+
+.deleteButton {
+    background-color: red;
+}

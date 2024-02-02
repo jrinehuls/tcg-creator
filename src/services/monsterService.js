@@ -23,4 +23,7 @@ export async function getMonsterById(id) {
 export async function updateMonster(id, formData) {
     return await Axios.put(url + `/${id}`, formData, config);
 }
-  
+
+export async function deleteMonster(id) {
+    return await Axios.delete(url + `/${id}`);
+}

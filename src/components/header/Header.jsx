@@ -9,7 +9,7 @@ function Header() {
                     <span>TCG Creater</span>
                     <div className={styles.linkContainer}>
                         <a href="/">Show Monsters</a>
-                        <a href="/monster/create">Create Monsters</a>
+                        <a href="/monster/create">Create Monster</a>
                         <a href="/spells">Show Spells</a>
                         <a href="/spell/create">Create Spell</a>
                     </div>

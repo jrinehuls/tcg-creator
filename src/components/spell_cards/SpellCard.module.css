@@ -25,12 +25,16 @@
 
 .top > span {
     text-decoration: underline;
+    font-weight: 700;
 }
 
 .text > p {
     margin: 0px;
     text-wrap: wrap;
     text-align: center;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 14px;
 }
 
 .buttonContainer {

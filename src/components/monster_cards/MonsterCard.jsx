@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 
 function MonsterCard( {monster} ) {
 
-    const navigator = useNavigate()
+    const navigator = useNavigate();
 
     return(
-        <div className={styles.card} onClick={() => navigator(`/monster/${monster.id}`)}>
+        <div className={styles.card} onClick={() => navigator(`/monster/choice/${monster.id}`)}>
             <div className={styles.topStats}>
                 <span className={styles.topTextItems}>{monster.name}</span>
                 <span className={styles.topTextItems}>{monster.hp} HP</span>
