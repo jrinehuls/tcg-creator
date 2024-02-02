@@ -8,9 +8,9 @@ function Header() {
                 <nav className={styles.navbar}>
                     <span>Monster Time</span>
                     <div className={styles.linkContainer}>
-                        <a href="/monster/create">Add Monster</a>
-                        <a href="/">Click Me</a>
-                        <a href="/">Click Me</a>
+                        <a href="/monster/create">Create Monster</a>
+                        <a href="/spell/create">Create Spell</a>
+                        <a href="/">Placeholder</a>
                     </div>
                 </nav>
             </header>
