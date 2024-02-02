@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { addSpell } from "../../services/spellService";
 import FormText from "../form_input/FormText";
 import FormFieldError from "../form_field_error/FormFieldError";
 import getErrorResponse from "../../utils/errorUtils";
@@ -26,9 +27,21 @@ function SpellForm() {
         })
     }
 
+    async function createSpell() {
+        try {
+            const response = await addSpell(spell);
+            console.log(response.status);
+            setSpell(defaultSpell);
+        } catch (error) {
+            setErrors(getErrorResponse(error));
+            console.log(errors);
+        }
+    }
+
     function handleClick() {
         console.log(spell);
-        setSpell(defaultSpell);
+        createSpell();
+
     }
 
     return(
