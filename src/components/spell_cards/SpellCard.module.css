@@ -1,0 +1,55 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+    height: 200px;
+    margin: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(20, 230, 20);
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.top, .text {
+    padding: 5px 10px;
+    width: 80%;
+    background-color: aliceblue;
+}
+
+.top > span {
+    text-decoration: underline;
+}
+
+.text > p {
+    margin: 0px;
+    text-wrap: wrap;
+    text-align: center;
+}
+
+.buttonContainer {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 10px;
+    height: 30px;
+}
+
+.buttonContainer > button {
+    width: 40%;
+    color: aliceblue;
+}
+
+.editButton {
+    background-color: blue;
+}
+
+.deleteButton {
+    background-color: red;
+}

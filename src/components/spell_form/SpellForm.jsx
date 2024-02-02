@@ -1,9 +1,10 @@
-import { useState } from "react";
-import { addSpell } from "../../services/spellService";
+import { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { addSpell, getSpellById, updateSpell } from "../../services/spellService";
 import FormText from "../form_input/FormText";
-import FormFieldError from "../form_field_error/FormFieldError";
 import getErrorResponse from "../../utils/errorUtils";
 import styles from "./SpellForm.module.css";
+
 
 const defaultSpell = {
     name: "",
@@ -16,6 +17,31 @@ function SpellForm() {
     const [spell, setSpell] = useState(defaultSpell);
     const [errors, setErrors] = useState(null);
 
+    const navigator = useNavigate();
+    const {id} = useParams();
+
+    useEffect(() => {
+        if (id) {
+            getSpell();
+        }
+    }, [id])
+
+    async function getSpell() {
+        try {
+            const response = await getSpellById(id);
+            if (response.status === 200) {
+                setSpell(response.data);
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    function clearForm() {
+        setSpell(defaultSpell);
+        setErrors(null);
+    }
+
     function handleChange(event) {
         const {name, value} = event.target;
 
@@ -27,21 +53,18 @@ function SpellForm() {
         })
     }
 
-    async function createSpell() {
+    async function handleClick() {
         try {
-            const response = await addSpell(spell);
-            console.log(response.status);
-            setSpell(defaultSpell);
+            if (id) {
+                await updateSpell(id, spell);
+            } else {
+                await addSpell(spell);
+            }
+            clearForm();
+            navigator("/spells");
         } catch (error) {
             setErrors(getErrorResponse(error));
-            console.log(errors);
         }
-    }
-
-    function handleClick() {
-        console.log(spell);
-        createSpell();
-
     }
 
     return(

@@ -6,11 +6,12 @@ function Header() {
         <div>
             <header>
                 <nav className={styles.navbar}>
-                    <span>Monster Time</span>
+                    <span>TCG Creater</span>
                     <div className={styles.linkContainer}>
-                        <a href="/monster/create">Create Monster</a>
+                        <a href="/">Show Monsters</a>
+                        <a href="/monster/create">Create Monsters</a>
+                        <a href="/spells">Show Spells</a>
                         <a href="/spell/create">Create Spell</a>
-                        <a href="/">Placeholder</a>
                     </div>
                 </nav>
             </header>
