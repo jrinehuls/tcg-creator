@@ -12,12 +12,12 @@ export async function addMonster(formData) {
     return await Axios.post(url, formData, config);
 }
 
-export async function getAllMonsters() {
-  return await Axios.get(url);
-}
-
 export async function getMonsterById(id) {
     return await Axios.get(url + `/${id}`);
+}
+
+export async function getAllMonsters() {
+  return await Axios.get(url);
 }
 
 export async function updateMonster(id, formData) {
@@ -26,4 +26,8 @@ export async function updateMonster(id, formData) {
 
 export async function deleteMonster(id) {
     return await Axios.delete(url + `/${id}`);
+}
+
+export async function addSpell(monsterId, spellId) {
+    return await Axios.patch(url + `/${monsterId}/spell/${spellId}`);
 }

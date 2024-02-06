@@ -13,7 +13,7 @@ function SpellCards() {
 
     useEffect(() => {
         getSpells();
-    },[refresh])
+    }, [refresh])
 
     async function getSpells() {
         try {
@@ -40,7 +40,7 @@ function SpellCards() {
             <h1>Your Spells:</h1>
             <div className={styles.cardContainer}>
                 {spells.map(spell => {
-                    return <SpellCard key={spell.id} spell={spell} onDelete={onDelete} monsterId={monsterId}/>
+                    return <SpellCard key={spell.id} spell={spell} onDelete={onDelete} monsterId={monsterId} spellId={spell.id}/>
                 })}
             </div>
         </div>
