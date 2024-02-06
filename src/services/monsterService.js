@@ -31,3 +31,7 @@ export async function deleteMonster(id) {
 export async function addSpell(monsterId, spellId) {
     return await Axios.patch(url + `/${monsterId}/spell/${spellId}`);
 }
+
+export async function getSpells(id) {
+    return await Axios.get(url + `/${id}/spells`);   
+}

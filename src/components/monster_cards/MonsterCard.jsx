@@ -1,7 +1,24 @@
+import { useEffect, useState } from "react";
 import styles from "./MonsterCard.module.css"
 import { useNavigate } from "react-router-dom";
+import { getSpells } from "../../services/monsterService";
 
 function MonsterCard( {monster} ) {
+
+    const [spells, setSpells] = useState([]);
+
+    useEffect(() => {
+        getMonsterSpells();
+    }, [])
+
+    async function getMonsterSpells() {
+        try {
+            const response = await getSpells(monster.id);
+            setSpells(response.data);
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     const navigator = useNavigate();
 
@@ -16,24 +33,24 @@ function MonsterCard( {monster} ) {
             </div>
             <div className={styles.statsContainer}>
                 <div className={styles.statsRow}>
-                    <div>Attack:{monster.attack}</div>
-                    <div>Defense:{monster.defense}</div>
+                    <div>Attack: {monster.attack}</div>
+                    <div>Defense: {monster.defense}</div>
                 </div>
                 <div className={styles.statsRow}>
-                    <div>Speed:{monster.speed}</div>
-                    <div>MP:{monster.mp}</div>
+                    <div>Speed: {monster.speed}</div>
+                    <div>MP: {monster.mp}</div>
                 </div>
                 <div className={styles.statsRow}>
-                    <div>Magic Attack:{monster.magicAttack}</div>
-                    <div>Magic Defense:{monster.magicDefense}</div>
+                    <div>Magic Attack: {monster.magicAttack}</div>
+                    <div>Magic Defense: {monster.magicDefense}</div>
                 </div>
                 <div className={styles.statsRow}>
-                    <div>Exp:{monster.baseExp}</div>
-                    <div>Gold:{monster.baseGold}</div>
+                    <div>Exp: {monster.baseExp}</div>
+                    <div>Gold: {monster.baseGold}</div>
                 </div>
             </div>
             <div className={styles.spellContainer}>
-                Spells will go here
+                {spells.map(spell => spell.name + " " + spell.description + " " + spell.power)}
             </div>
         </div>
     );
