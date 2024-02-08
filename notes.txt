@@ -1,0 +1,2 @@
+Work on card spell divs
+Remove spell from monster
