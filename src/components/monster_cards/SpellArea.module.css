@@ -1,0 +1,32 @@
+.spellContainer {
+    display: flex;
+    border: 1px solid red;
+    flex-grow: 1;
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    flex-grow: 3;
+}
+
+.name {
+    display: flex;
+    border: 1px solid red;
+}
+
+.description {
+    display: flex;
+    border: 1px solid red;
+    width: inherit;
+}
+
+.power {
+    display: flex;
+    border: 1px solid black;
+    width: 20%;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+}

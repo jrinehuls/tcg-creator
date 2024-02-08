@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "./MonsterCard.module.css"
 import { useNavigate } from "react-router-dom";
 import { getSpells } from "../../services/monsterService";
+import SpellArea from "./SpellArea";
 
 function MonsterCard( {monster} ) {
 
@@ -50,7 +51,7 @@ function MonsterCard( {monster} ) {
                 </div>
             </div>
             <div className={styles.spellContainer}>
-                {spells.map(spell => spell.name + " " + spell.description + " " + spell.power)}
+                {spells.map(spell => <SpellArea key={spell.id} spell={spell} />)}
             </div>
         </div>
     );

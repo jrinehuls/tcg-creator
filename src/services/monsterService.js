@@ -28,10 +28,14 @@ export async function deleteMonster(id) {
     return await Axios.delete(url + `/${id}`);
 }
 
+export async function getSpells(id) {
+    return await Axios.get(url + `/${id}/spells`);   
+}
+
 export async function addSpell(monsterId, spellId) {
     return await Axios.patch(url + `/${monsterId}/add-spell/${spellId}`);
 }
 
-export async function getSpells(id) {
-    return await Axios.get(url + `/${id}/spells`);   
+export async function removeSpell(monsterId, spellId) {
+    return await Axios.patch(url + `/${monsterId}/remove-spell/${spellId}`);
 }
