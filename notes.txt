@@ -1,2 +1,0 @@
-When spell is edited, monster who have that spell lose it.
-Maybe has to do with being in monster card instead of monster cards.
