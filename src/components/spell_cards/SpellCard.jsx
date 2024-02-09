@@ -1,19 +1,47 @@
-import { addSpell } from "../../services/monsterService";
+import { learnSpell, forgetSpell } from "../../services/monsterService";
 import styles from "./SpellCard.module.css";
 import { useNavigate } from "react-router-dom";
 
-function SpellCard({spell, onDelete, monsterId, spellId}) {
+function SpellCard({spell, onDelete, action, monsterId, spellId}) {
 
     const navigator = useNavigate()
 
-    async function addMonsterSpell() {
+    async function learnMonsterSpell() {
         try {
-            await addSpell(monsterId, spellId);
+            await learnSpell(monsterId, spellId);
             navigator("/");
         } catch (error) {
             console.log(error);
         }
     }
+
+    async function forgetMonsterSpell() {
+        try {
+            await forgetSpell(monsterId, spellId);
+            navigator("/");
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    function handleMonsterSpells() {
+        if (action === 'learn') {
+            return <button className={styles.learnButton} type="button" onClick={learnMonsterSpell}>Learn</button>
+        } else {
+            return <button className={styles.forgetButton} type="button" onClick={forgetMonsterSpell}>Forget</button>
+        }
+    }
+
+    function handleSpells() {
+        return (
+            <>
+                <button className={styles.editButton} type="button" onClick={() => navigator(`/spell/${spell.id}`)}>Edit</button>
+                <button className={styles.deleteButton} type="button" onClick={() => onDelete(spell.id)}>Delete</button>
+            </>
+        );
+    }
+
+
 
     return (
         <div className={styles.card}>
@@ -24,14 +52,9 @@ function SpellCard({spell, onDelete, monsterId, spellId}) {
             <div className={styles.text}>
                 <p>{spell.description}</p>
             </div>
-            {monsterId ? 
             <div className={styles.buttonContainer}>
-                <button className={styles.learnButton} type="button" onClick={addMonsterSpell}>Learn</button>
-            </div> : 
-            <div className={styles.buttonContainer}>
-                <button className={styles.editButton} type="button" onClick={() => navigator(`/spell/${spell.id}`)}>Edit</button>
-                <button className={styles.deleteButton} type="button" onClick={() => onDelete(spell.id)}>Delete</button>
-            </div>}
+                { monsterId ? handleMonsterSpells() : handleSpells() }
+            </div>
         </div>
     );
 }

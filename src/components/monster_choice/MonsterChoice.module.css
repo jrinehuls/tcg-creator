@@ -1,7 +1,7 @@
 .container {
     margin: 150px auto 200px auto;
-    width: 40%;
-    min-width: 500px;
+    width: 30%;
+    min-width: 450px;
 }
 
 .container > h1 {
@@ -12,33 +12,39 @@
 
 .buttonContainer {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     border: 1px solid black;
     border-radius: 10px;
-    padding: 20px;
+    padding: 20px 50px;
     background-color: rgb(20, 230, 20);
 }
 
 .buttonContainer > button {
+    margin: 10px;
     font-size: 16px;
     color: white;
     font-weight: 700;
     height: 60px;
-    width: 30%;
+    width: 150px;
 }
 
 .buttonContainer > button:hover {
     cursor: pointer;
 }
 
-.addButton {
-    background-color: blue;
-}
-
 .editButton {
-    background-color: orange;
+    background-color: rgb(120, 0, 230);
 }
 
 .deleteButton {
     background-color: red;
+}
+
+.addButton {
+    background-color: blue;
+}
+
+.forgetButton {
+    background-color: rgb(230, 0, 120);
 }

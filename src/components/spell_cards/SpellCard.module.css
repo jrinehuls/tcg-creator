@@ -54,6 +54,10 @@
     background-color: orange;
 }
 
+.forgetButton {
+    background-color: red;
+}
+
 .editButton {
     background-color: blue;
 }

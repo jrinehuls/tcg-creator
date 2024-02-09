@@ -38,9 +38,10 @@ function MonsterChoice() {
         <div className={styles.container}>
             <h1>What are your intentions with {monster.name}?</h1>
             <div className={styles.buttonContainer}>
-                <button className={styles.addButton} type="button" onClick={() => navigator(`/spells/${id}`)}>Add Spell</button>
                 <button className={styles.editButton} type="button" onClick={() => navigator(`/monster/${id}`)}>Edit {monster.name}</button>
                 <button className={styles.deleteButton} type="button" onClick={onDelete}>Delete {monster.name}</button>
+                <button className={styles.addButton} type="button" onClick={() => navigator(`/spells/${id}?action=learn`)}>Learn Spell</button>
+                <button className={styles.forgetButton} type="button" onClick={() => navigator(`/spells/${id}?action=forget`)}>Forget Spell</button>
             </div>
         </div>
     );

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "./MonsterCard.module.css"
 import { useNavigate } from "react-router-dom";
-import { getSpells } from "../../services/monsterService";
+import { getSpellsById } from "../../services/monsterService";
 import SpellArea from "./SpellArea";
 
 function MonsterCard( {monster} ) {
@@ -14,7 +14,7 @@ function MonsterCard( {monster} ) {
 
     async function getMonsterSpells() {
         try {
-            const response = await getSpells(monster.id);
+            const response = await getSpellsById(monster.id);
             setSpells(response.data);
         } catch (error) {
             console.log(error);
