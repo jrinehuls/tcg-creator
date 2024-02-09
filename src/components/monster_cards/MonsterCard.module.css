@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     width: 320px;
-    aspect-ratio: 5/7;
+    height: 448px;
     margin: 20px;
     border: 1px solid black;
     border-radius: 10px;
@@ -28,7 +28,7 @@
     height: 35%;
     background: linear-gradient(to bottom left, rgb(175, 225, 235), rgb(140, 150, 210));
     border: 1px solid black;
-    border-radius: 10px;
+    border-radius: 6px;
     margin: 0px auto;
 }
 
@@ -39,11 +39,13 @@
 
 .statsContainer {
     border: 1px solid black;
+    border-radius: 6px;
     background-color: yellow;
     display: flex;
     flex-direction: column;
     width: 85%;
     margin: 1px auto;
+    font-size: 11px;
 }
 
 .statsRow {
@@ -60,7 +62,9 @@
     border: 1px solid black;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     width: 85%;
     margin: 1px auto 23px auto;
     flex-grow: 1;
+    border-radius: 6px;
 }

@@ -41,8 +41,6 @@ function SpellCard({spell, onDelete, action, monsterId, spellId}) {
         );
     }
 
-
-
     return (
         <div className={styles.card}>
             <div className={styles.top}>

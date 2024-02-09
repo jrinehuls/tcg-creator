@@ -1,4 +1,1 @@
-Work on card spell divs
-Remove spell from monster
-Only show spells monster doesn't know
-Make spell cards same width
+Work on card spell area divs

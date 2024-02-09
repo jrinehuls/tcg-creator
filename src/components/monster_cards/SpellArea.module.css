@@ -1,32 +1,32 @@
 .spellContainer {
     display: flex;
-    border: 1px solid red;
     flex-grow: 1;
 }
 
 .text {
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
-    flex-grow: 3;
+    width: 80%;
+    justify-content: center;
 }
 
 .name {
-    display: flex;
-    border: 1px solid red;
+    padding-left: 10px;
+    font-weight: 800;
 }
 
 .description {
-    display: flex;
-    border: 1px solid red;
-    width: inherit;
+    font-size: 10px;
+    padding-left: 2px;
+    font-weight: 600;
 }
 
 .power {
     display: flex;
-    border: 1px solid black;
     width: 20%;
     align-items: center;
     justify-content: center;
     flex-grow: 1;
+    font-size: 20px;
+    font-weight: 700;
 }

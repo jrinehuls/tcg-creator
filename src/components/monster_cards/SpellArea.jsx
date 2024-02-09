@@ -1,3 +1,4 @@
+
 import styles from "./SpellArea.module.css"
 
 function SpellArea({spell}) {
@@ -14,7 +15,6 @@ function SpellArea({spell}) {
             <div className={styles.power}>
                 {spell.power}                
             </div>
-
         </div>
     );
 }
