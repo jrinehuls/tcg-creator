@@ -1,4 +1,5 @@
 import Header from "./header/Header"
+import Login from "./auth/Login";
 import MonsterCards from "./monster_cards/MonsterCards";
 import MonsterForm from "./monster_form/MonsterForm";
 import MonsterChoice from "./monster_choice/MonsterChoice";
@@ -14,7 +15,8 @@ function App() {
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route path="/" element={<MonsterCards />}></Route>
+          <Route path="/" element={<Login />}></Route>
+          <Route path="/monsters" element={<MonsterCards />}></Route>
           <Route path="/monster/create" element={<MonsterForm />}></Route>
           <Route path="/monster/:id" element={<MonsterForm />}></Route>
           <Route path="/monster/choice/:id" element={<MonsterChoice />}></Route>

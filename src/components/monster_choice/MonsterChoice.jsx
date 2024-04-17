@@ -28,7 +28,7 @@ function MonsterChoice() {
     async function onDelete() {
         try {
             await deleteMonster(id);
-            navigator("/");
+            navigator("/monsters");
         } catch(error) {
             console.log(error);
         }

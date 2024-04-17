@@ -42,7 +42,7 @@ function MonsterForm() {
             setMonster(response.data);
         } catch (error) {
             if (error.response.status === 404) {
-                navigator("/");
+                navigator("/monsters");
             } else {
                 console.log(error);
             }
@@ -95,7 +95,7 @@ function MonsterForm() {
                 await addMonster(formData);
             }
             clearForm();
-            navigator("/");
+            navigator("/monsters");
         } catch (error) {
             setErrors(getErrorResponse(error));
         }

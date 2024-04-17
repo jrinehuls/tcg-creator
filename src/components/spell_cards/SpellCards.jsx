@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { getAllSpells, deleteSpell } from "../../services/spellService";
 import { getSpellsById } from "../../services/monsterService";
-import { useNavigate, useParams, useLocation } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import SpellCard from "./SpellCard";
 import styles from "./SpellCards.module.css";
 

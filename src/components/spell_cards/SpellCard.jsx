@@ -9,7 +9,7 @@ function SpellCard({spell, onDelete, action, monsterId, spellId}) {
     async function learnMonsterSpell() {
         try {
             await learnSpell(monsterId, spellId);
-            navigator("/");
+            navigator("/monsters");
         } catch (error) {
             console.log(error);
         }
@@ -18,7 +18,7 @@ function SpellCard({spell, onDelete, action, monsterId, spellId}) {
     async function forgetMonsterSpell() {
         try {
             await forgetSpell(monsterId, spellId);
-            navigator("/");
+            navigator("/monsters");
         } catch (error) {
             console.log(error);
         }
