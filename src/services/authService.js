@@ -12,11 +12,11 @@ export class AuthService {
     constructor(){};
 
     async login(user) {
-        return await Axios.get(url + '/authenticate', user, config);
+        return await Axios.post(this.url + '/authenticate', user, this.config);
     }
 
     async register(user) {
-        return await Axios.post(url + '/register', user, config);
+        return await Axios.post(this.url + '/register', user, this.config);
     }
 
 }

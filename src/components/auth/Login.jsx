@@ -7,7 +7,7 @@ import FormText from "../form_input/FormText";
 function Login() {
     const authService = new AuthService();
 
-    let defaultUser = {
+    const defaultUser = {
         username: "",
         password: ""
     }
@@ -17,29 +17,38 @@ function Login() {
 
     async function login() {
         try {
-            const response = await authService.login();
+            const response = await authService.login(user);
+            console.log(response.data);
+            console.log(response.headers);
+            console.log(response.headers['authorization']);
         } catch (e) {
-            console.error(e);
+            console.error(e.response.data);
         }
     }
 
     function handleChange(event) {
-        const [name, value] = event.target;
+        const {name, value} = event.target;
+        setUser(u => {
+            return {
+                ...u,
+                [name]: value
+            };
+        })
     }
 
     function handleClick() {
-
+        login();
     }
 
     return(
-        <div>
+        <div style={{marginTop: '100px'}}>
             <h1>Loggeth Thou In</h1>
             <div>
                 <form>
                     <FormText labelText="Username:" handleChange={handleChange} value={user.username}
-                            type="text" name="username" holder="Enter Username..." messages={errors?.name} />
+                            type="text" name="username" holder="Enter Username..." messages={errors?.username} />
                     <FormText labelText="Password:" handleChange={handleChange} value={user.password}
-                            type="text" name="password" holder="Enter Password..." messages={errors?.description} />
+                            type="text" name="password" holder="Enter Password..." messages={errors?.password} />
                     <div>
                         <button onClick={handleClick} type="button" >Submit</button >
                     </div>
