@@ -4,6 +4,7 @@ import { authenticate } from "../../services/authService.js";
 import { getErrorResponse } from "../../utils/errorUtils.js";
 import styles from "./Login.module.css";
 import AuthForm from "./AuthForm.jsx";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
 
@@ -15,15 +16,18 @@ function Login() {
     const [user, setUser] = useState(defaultUser);
     const [errors, setErrors] = useState(null);
 
+    const navigator = useNavigate();
+
     async function attemptLogin() {
         try {
             const response = await authenticate(user);
             const token = response.headers['authorization'];
             localStorage.setItem('token', token);
-            console.log(localStorage.getItem('token'));
+            navigator('/monsters');
+            clearForm();
         } catch (e) {
-            setErrors(getErrorResponse(e));
             console.error(e);
+            setErrors(getErrorResponse(e));
         }
     }
 
@@ -35,6 +39,11 @@ function Login() {
                 [name]: value
             };
         })
+    }
+
+    function clearForm() {
+        setUser(defaultUser);
+        setErrors(null);
     }
 
     function handleClick() {

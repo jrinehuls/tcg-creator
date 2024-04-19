@@ -4,6 +4,7 @@ import { register } from "../../services/authService.js";
 import { getErrorResponse } from "../../utils/errorUtils.js";
 import styles from "./Login.module.css";
 import AuthForm from "./AuthForm.jsx";
+import { useNavigate } from "react-router-dom";
 
 function SignUp() {
 
@@ -14,10 +15,13 @@ function SignUp() {
 
     const [user, setUser] = useState(defaultUser);
     const [errors, setErrors] = useState(null);
+    const navigator = useNavigate();
 
     async function attemptRegister() {
         try {
             await register(user);
+            navigator('/');
+            clearForm();
         } catch (e) {
             setErrors(getErrorResponse(e));
             console.error(e);
@@ -32,6 +36,11 @@ function SignUp() {
                 [name]: value
             };
         })
+    }
+
+    function clearForm() {
+        setUser(defaultUser);
+        setErrors(null);
     }
 
     function handleClick() {
