@@ -1,11 +1,11 @@
 
 import { useState } from "react";
-import { authenticate } from "../../services/authService.js";
+import { register } from "../../services/authService.js";
 import { getErrorResponse } from "../../utils/errorUtils.js";
 import styles from "./Login.module.css";
 import AuthForm from "./AuthForm.jsx";
 
-function Login() {
+function SignUp() {
 
     const defaultUser = {
         username: "",
@@ -15,12 +15,9 @@ function Login() {
     const [user, setUser] = useState(defaultUser);
     const [errors, setErrors] = useState(null);
 
-    async function attemptLogin() {
+    async function attemptRegister() {
         try {
-            const response = await authenticate(user);
-            const token = response.headers['authorization'];
-            localStorage.setItem('token', token);
-            console.log(localStorage.getItem('token'));
+            await register(user);
         } catch (e) {
             setErrors(getErrorResponse(e));
             console.error(e);
@@ -38,15 +35,15 @@ function Login() {
     }
 
     function handleClick() {
-        attemptLogin();
+        attemptRegister();
     }
 
     return(
         <div className={styles.container}>
-            <h1>Loggeth Thou In</h1>
+            <h1>Signeth Thou Up</h1>
             <AuthForm handleClick={handleClick} handleChange={handleChange} user={user} errors={errors}/>
         </div>
     );
 }
 
-export default Login;
+export default SignUp;

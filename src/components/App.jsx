@@ -7,6 +7,7 @@ import SpellCards from "./spell_cards/SpellCards";
 import SpellForm from "./spell_form/SpellForm";
 import Footer from "./footer/Footer"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import SignUp from "./auth/SignUp";
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Login />}></Route>
+          <Route path="/register" element={<SignUp />}></Route>
           <Route path="/monsters" element={<MonsterCards />}></Route>
           <Route path="/monster/create" element={<MonsterForm />}></Route>
           <Route path="/monster/:id" element={<MonsterForm />}></Route>
