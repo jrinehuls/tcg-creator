@@ -1,0 +1,33 @@
+.container {
+    margin: 150px auto 150px auto;
+    width: 40%;
+    min-width: 500px;
+}
+
+.container > h1 {
+    text-align: center;
+    color: rgb(20, 230, 20);
+    margin-top: 0px;
+}
+
+.formContainer {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: rgb(20, 230, 20);
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.submitButton {
+    font-size: 20px;
+    width: 40%;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 8px 0px;
+}

@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { addMonster, getMonsterById, updateMonster } from "../../services/monsterService";
 import FormText from "../form_input/FormText";
 import FormFieldError from "../form_field_error/FormFieldError";
-import getErrorResponse from "../../utils/errorUtils";
+import { getErrorResponse } from "../../utils/errorUtils";
 import styles from "./MonsterForm.module.css";
 
 function MonsterForm() {

@@ -1,5 +1,6 @@
+import { AxiosError } from "axios";
 
-function getErrorResponse(error) {
+export function getErrorResponse(error) {
     const status = error.response.status ?? null
     if (status >= 400 && status < 500 && error.response.data.errors) {
         return error.response.data.errors;
@@ -7,4 +8,12 @@ function getErrorResponse(error) {
     return null;
 }
 
-export default getErrorResponse;
+export function isAuthenticated(error) {
+    if (error instanceof AxiosError) {
+        const code = error.response.status;
+        if (code === 401 || code === 403) {
+            return false;
+        }
+    }
+    return true;
+}

@@ -2,10 +2,13 @@ import Axios from "axios";
 
 const url = "http://localhost:8080/api/monster";
 
+let token = localStorage.getItem("token");
+
 const config = {
     headers: {
-      'content-type': 'multipart/form-data',
-    },
+        'Content-Type': 'multipart/form-data',
+        Authorization: token 
+    }
 };
 
 export async function addMonster(formData) {
@@ -13,11 +16,11 @@ export async function addMonster(formData) {
 }
 
 export async function getMonsterById(id) {
-    return await Axios.get(url + `/${id}`);
+    return await Axios.get(url + `/${id}`, config);
 }
 
 export async function getAllMonsters() {
-  return await Axios.get(url);
+  return await Axios.get(url, config);
 }
 
 export async function updateMonster(id, formData) {
@@ -25,17 +28,17 @@ export async function updateMonster(id, formData) {
 }
 
 export async function deleteMonster(id) {
-    return await Axios.delete(url + `/${id}`);
+    return await Axios.delete(url + `/${id}`, config);
 }
 
 export async function getSpellsById(id) {
-    return await Axios.get(url + `/${id}/spells`);   
+    return await Axios.get(url + `/${id}/spells`, config);   
 }
 
 export async function learnSpell(monsterId, spellId) {
-    return await Axios.patch(url + `/${monsterId}/add-spell/${spellId}`);
+    return await Axios.patch(url + `/${monsterId}/add-spell/${spellId}`, null, config);
 }
 
 export async function forgetSpell(monsterId, spellId) {
-    return await Axios.patch(url + `/${monsterId}/remove-spell/${spellId}`);
+    return await Axios.patch(url + `/${monsterId}/remove-spell/${spellId}`, null, config);
 }

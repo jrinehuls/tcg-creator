@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { getAllMonsters } from "../../services/monsterService";
 import MonsterCard from "./MonsterCard";
-import styles from "./MonsterCards.module.css"
+import { isAuthenticated } from "../../utils/errorUtils";
+import styles from "./MonsterCards.module.css";
 
 
 function MonsterCards() {
 
     const [monsters, setMonsters] = useState([]);
+    const navigator = useNavigate();
 
     useEffect(() => {
         getMonsters()
@@ -18,7 +21,11 @@ function MonsterCards() {
             console.log(response.data);
             setMonsters(response.data);
         } catch (error) {
-            console.log(error);
+            if (!isAuthenticated(error)) {
+                navigator('/');
+            } else {
+                console.log(error);
+            }
         }
 
     }

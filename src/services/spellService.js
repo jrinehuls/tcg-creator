@@ -2,9 +2,12 @@ import Axios from "axios";
 
 const url = "http://localhost:8080/api/spell";
 
+let token = localStorage.getItem("token");
+
 const config = {
     headers: {
-      'content-type': 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: token
     },
 };
 

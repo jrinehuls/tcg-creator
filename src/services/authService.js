@@ -1,22 +1,17 @@
 import Axios from "axios";
 
-export class AuthService {
-    url = "http://localhost:8080/api/user";
+const url = "http://localhost:8080/api/user";
 
-    config = {
-        headers: {
-            'content-type': 'application/json'
-        },
-    };
+const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+};
 
-    constructor(){};
+export async function authenticate(user) {
+    return await Axios.post(url + '/authenticate', user, config);
+}
 
-    async login(user) {
-        return await Axios.post(this.url + '/authenticate', user, this.config);
-    }
-
-    async register(user) {
-        return await Axios.post(this.url + '/register', user, this.config);
-    }
-
+export async function register(user) {
+    return await Axios.post(url + '/register', user, config);
 }

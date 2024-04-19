@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { addSpell, getSpellById, updateSpell } from "../../services/spellService";
 import FormText from "../form_input/FormText";
-import getErrorResponse from "../../utils/errorUtils";
+import { getErrorResponse } from "../../utils/errorUtils";
 import styles from "./SpellForm.module.css";
 
 

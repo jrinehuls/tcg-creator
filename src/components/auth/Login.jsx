@@ -1,11 +1,11 @@
 
 import { useState } from "react";
-import { AuthService } from "../../services/authService.js";
-import FormText from "../form_input/FormText";
-
+import { authenticate } from "../../services/authService.js";
+import { getErrorResponse } from "../../utils/errorUtils.js";
+import styles from "./Login.module.css";
+import AuthForm from "./AuthForm.jsx";
 
 function Login() {
-    const authService = new AuthService();
 
     const defaultUser = {
         username: "",
@@ -17,12 +17,13 @@ function Login() {
 
     async function login() {
         try {
-            const response = await authService.login(user);
-            console.log(response.data);
-            console.log(response.headers);
-            console.log(response.headers['authorization']);
+            const response = await authenticate(user);
+            const token = response.headers['authorization'];
+            localStorage.setItem('token', token);
+            console.log(localStorage.getItem('token'));
         } catch (e) {
-            console.error(e.response.data);
+            setErrors(getErrorResponse(e));
+            console.error(e);
         }
     }
 
@@ -41,19 +42,9 @@ function Login() {
     }
 
     return(
-        <div style={{marginTop: '100px'}}>
+        <div className={styles.container}>
             <h1>Loggeth Thou In</h1>
-            <div>
-                <form>
-                    <FormText labelText="Username:" handleChange={handleChange} value={user.username}
-                            type="text" name="username" holder="Enter Username..." messages={errors?.username} />
-                    <FormText labelText="Password:" handleChange={handleChange} value={user.password}
-                            type="text" name="password" holder="Enter Password..." messages={errors?.password} />
-                    <div>
-                        <button onClick={handleClick} type="button" >Submit</button >
-                    </div>
-                </form>
-            </div>
+            <AuthForm handleClick={handleClick} handleChange={handleChange} user={user} errors={errors}/>
         </div>
     );
 }
