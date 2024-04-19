@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { deleteMonster, getMonsterById } from "../../services/monsterService";
 import styles from "./MonsterChoice.module.css";
 import { useNavigate, useParams } from "react-router-dom";
+import { isAuthenticated } from "../../utils/errorUtils";
+
 
 function MonsterChoice() {
 
@@ -21,7 +23,11 @@ function MonsterChoice() {
             const response = await getMonsterById(id);
             setMonster(response.data);
         } catch(error) {
-            console.log(error);
+            if (!isAuthenticated(error)) {
+                navigator("/");
+            } else {
+                console.log(error);
+            }
         }
     }
 
@@ -30,7 +36,11 @@ function MonsterChoice() {
             await deleteMonster(id);
             navigator("/monsters");
         } catch(error) {
-            console.log(error);
+            if (!isAuthenticated(error)) {
+                navigator("/");
+            } else {
+                console.log(error);
+            }
         }
     }
 

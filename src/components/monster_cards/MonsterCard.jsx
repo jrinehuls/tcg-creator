@@ -3,10 +3,13 @@ import styles from "./MonsterCard.module.css"
 import { useNavigate } from "react-router-dom";
 import { getSpellsById } from "../../services/monsterService";
 import SpellArea from "./SpellArea";
+import { isAuthenticated } from "../../utils/errorUtils";
 
 function MonsterCard( {monster} ) {
 
     const [spells, setSpells] = useState([]);
+
+    const navigator = useNavigate();
 
     useEffect(() => {
         getMonsterSpells();
@@ -17,11 +20,13 @@ function MonsterCard( {monster} ) {
             const response = await getSpellsById(monster.id);
             setSpells(response.data);
         } catch (error) {
-            console.log(error);
+            if (!isAuthenticated(error)) {
+                navigator("/");
+            } else {
+                console.log(error);
+            }
         }
     }
-
-    const navigator = useNavigate();
 
     return(
         <div className={styles.card} onClick={() => navigator(`/monster/choice/${monster.id}`)}>

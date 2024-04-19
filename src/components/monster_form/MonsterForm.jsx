@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { addMonster, getMonsterById, updateMonster } from "../../services/monsterService";
 import FormText from "../form_input/FormText";
 import FormFieldError from "../form_field_error/FormFieldError";
-import { getErrorResponse } from "../../utils/errorUtils";
+import { getErrorResponse, isAuthenticated } from "../../utils/errorUtils";
 import styles from "./MonsterForm.module.css";
 
 function MonsterForm() {
@@ -41,6 +41,9 @@ function MonsterForm() {
             const response = await getMonsterById(id);
             setMonster(response.data);
         } catch (error) {
+            if (!isAuthenticated(error)) {
+                navigator("/");
+            }
             if (error.response.status === 404) {
                 navigator("/monsters");
             } else {
@@ -97,7 +100,11 @@ function MonsterForm() {
             clearForm();
             navigator("/monsters");
         } catch (error) {
-            setErrors(getErrorResponse(error));
+            if (!isAuthenticated(error)) {
+                navigator("/");
+            } else {
+                setErrors(getErrorResponse(error));
+            }
         }
     }
 

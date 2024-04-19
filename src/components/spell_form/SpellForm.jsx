@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { addSpell, getSpellById, updateSpell } from "../../services/spellService";
 import FormText from "../form_input/FormText";
-import { getErrorResponse } from "../../utils/errorUtils";
+import { getErrorResponse, isAuthenticated } from "../../utils/errorUtils";
 import styles from "./SpellForm.module.css";
 
 
@@ -33,7 +33,11 @@ function SpellForm() {
                 setSpell(response.data);
             }
         } catch (error) {
-            console.log(error);
+            if (!isAuthenticated(error)) {
+                navigator("/");
+            } else {
+                console.log(error);
+            }
         }
     }
 
@@ -63,7 +67,11 @@ function SpellForm() {
             clearForm();
             navigator("/spells");
         } catch (error) {
-            setErrors(getErrorResponse(error));
+            if (!isAuthenticated(error)) {
+                navigator("/");
+            } else {
+                setErrors(getErrorResponse(error));
+            }
         }
     }
 

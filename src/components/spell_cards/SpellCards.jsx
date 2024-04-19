@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { getAllSpells, deleteSpell } from "../../services/spellService";
 import { getSpellsById } from "../../services/monsterService";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, useLocation, useNavigate } from "react-router-dom";
 import SpellCard from "./SpellCard";
 import styles from "./SpellCards.module.css";
+import { isAuthenticated } from "../../utils/errorUtils";
 
 let action = null;
 
@@ -15,6 +16,8 @@ function SpellCards() {
 
     const {monsterId} = useParams();
     const {search} = useLocation();
+
+    const navigator = useNavigate();
 
     useEffect(() => {
 
@@ -32,7 +35,11 @@ function SpellCards() {
             const response = await getAllSpells();
             setSpells(response.data)
         } catch (error) {
-            console.log(error);
+            if (!isAuthenticated(error)) {
+                navigator("/");
+            } else {
+                console.log(error);
+            }
         }
     }
 
@@ -41,7 +48,11 @@ function SpellCards() {
             const response = await getSpellsById(monsterId);
             setMonsterSpells(response.data)
         } catch (error) {
-            console.log(error);
+            if (!isAuthenticated(error)) {
+                navigator("/");
+            } else {
+                console.log(error);
+            }
         }
     }
 
@@ -52,7 +63,11 @@ function SpellCards() {
                 setRefresh(!refresh);
             }
         } catch (error) {
-            console.log(error);
+            if (!isAuthenticated(error)) {
+                navigator("/");
+            } else {
+                console.log(error);
+            }
         }
     }
 

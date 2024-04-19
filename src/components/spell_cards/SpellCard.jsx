@@ -1,4 +1,5 @@
 import { learnSpell, forgetSpell } from "../../services/monsterService";
+import { isAuthenticated } from "../../utils/errorUtils";
 import styles from "./SpellCard.module.css";
 import { useNavigate } from "react-router-dom";
 
@@ -11,7 +12,11 @@ function SpellCard({spell, onDelete, action, monsterId, spellId}) {
             await learnSpell(monsterId, spellId);
             navigator("/monsters");
         } catch (error) {
-            console.log(error);
+            if (!isAuthenticated(error)) {
+                navigator("/");
+            } else {
+                console.log(error);
+            }
         }
     }
 
@@ -20,7 +25,11 @@ function SpellCard({spell, onDelete, action, monsterId, spellId}) {
             await forgetSpell(monsterId, spellId);
             navigator("/monsters");
         } catch (error) {
-            console.log(error);
+            if (!isAuthenticated(error)) {
+                navigator("/");
+            } else {
+                console.log(error);
+            }
         }
     }
 

@@ -11,8 +11,8 @@ function Header() {
             <header>
                 <nav className={styles.navbar}>
                     <span>TCG Creater</span>
-                    <div><a href='/' onClick={logout()}>logout</a></div>
                     <div className={styles.linkContainer}>
+                        <a href='/' onClick={logout()}>Logout</a>
                         <a href="/monsters">Show Monsters</a>
                         <a href="/monster/create">Create Monster</a>
                         <a href="/spells">Show Spells</a>
