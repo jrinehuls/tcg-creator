@@ -44,7 +44,10 @@ function Login() {
     return(
         <div className={styles.container}>
             <h1>Loggeth Thou In</h1>
-            <AuthForm handleClick={handleClick} handleChange={handleChange} user={user} errors={errors}/>
+            <div className={styles.formContainer}>
+                <AuthForm handleClick={handleClick} handleChange={handleChange} user={user} errors={errors}/>
+                <a href="/register">Register</a>
+            </div>
         </div>
     );
 }
