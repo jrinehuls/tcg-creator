@@ -1,7 +1,14 @@
 # TCG Creator
 
 <ul>
-    <li></li>
+    <li>Title: TCG Creator</li>
+    <li>Purpose: The purpose of this application is to create trading cards by consuming web APIs I built using Spring Framework and Java</li>
+    <li>Back End Application:<a href="https://github.com/jrinehuls/rpg-api"> Here</a></li>
+    <li>Author: Justin Rinehuls</li>
+    <li>Contact Email: jrinehuls@gmail.com</li>
+    <li>Date: 04/30/2024</li>
+    <li>Node Version: 20.10.0</li>
+    <li>React Version: 18.2.0</li>
 </ul>
 
 ## Register
